@@ -1,0 +1,2 @@
+# Tone-Analyzer-Node-RED
+This repository provides an example of a Node-RED application that grabs Tweets and analyzes the tone using the Tone Analyzer service available on IBM Cloud. Based on the tone, the developer then posts something on Twitter. In this repository, we keep it simple by just posting one of two types of messages (based on whether the tone of the grabbed tweet is positive or negative).
