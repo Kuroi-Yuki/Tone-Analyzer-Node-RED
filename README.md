@@ -13,6 +13,7 @@ Tone Analyzer leverages cognitive linguistic analysis to identify a variety of t
 
 ## Architecture overview
 An architecture overview of the system can be found below.
+
 ![Architecture overview of the system](images/tone16.png)
 
 ## Pre-requisite
@@ -58,7 +59,9 @@ Next, we need to create an instance of the Watson Tone Analyzer service and bind
 ![Node-RED flow editor](images/tone4.png)
 
 ## Overall Node-RED flow
-The following diagram provides an overview of the finalize Node-RED flow. If you are not interested in starting from scratch, you can import the final version of the flow from the file **Node-RED_flow_Full.json**, which can be found in this repository.
+The following diagram provides an overview of the finalize Node-RED flow. If you are not interested in starting from scratch, you can import the final version of the flow from the file **Node-RED_flow_Full.json**, which can be found in this repository. To do that:
+- Go to the hamburger menu at the top right of the page after which select **Import Clipboard**. 
+- Paste the content of the JSON file and click on **Import**.
 
 ![Overall Node-RED flow](images/tone7.png)
 
@@ -191,4 +194,4 @@ The purpose of this node can be to explain the functionality of a series of node
 
 ![Edit comment node](images/tone14.png)
 
-
+And that is it!!
