@@ -1,0 +1,149 @@
+[
+    {
+        "id": "9e7b7d96.595df",
+        "type": "debug",
+        "z": "81481b82.329c5",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "response",
+        "x": 595,
+        "y": 162,
+        "wires": []
+    },
+    {
+        "id": "f96ee93a.57a788",
+        "type": "function",
+        "z": "81481b82.329c5",
+        "name": "Extract emotional tone",
+        "func": "\nvar emotions = [];\nvar threshold = 0.3;\nvar topemotion ='';\n\n\n// Simplify the object returned by tone analyzer to only the emotion tones\nemotions = msg.response.document_tone.tone_categories\n                .filter(function(c){\n                    if (c.category_id == \"emotion_tone\")\n                    {return c; }\n                    })[0].tones;\n                    \n\n// node.warn(\"Detected tones: \\n\" + JSON.stringify(emotions));\n\n// Find highest score and return that tone name, if that score is greater than the threshold\ntopemotion = emotions.reduce(function(a, b){ return a.score > b.score ? a : b; });\n\nif (topemotion.score > threshold) {\n    topemotion = topemotion.tone_name;\n} else {\n    topemotion = \"Neutral\";\n}\n\n\n// Determining the msg to be returned\nvar emotion = \"\";\nif(topemotion == \"Neutral\" || topemotion == \"Joy\"){\n    emotion = \"This tweet is positive\";\n    \n}else{\n    emotion = \"Sorry to tell you that you have a negative tweet\";\n    \n}\n\n// Setting the final output + the timestamp \nmsg.additional_context = {\n    \"emotions\":emotion + \"\\n\\n\" + new Date(),\n};\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 595,
+        "y": 280,
+        "wires": [
+            [
+                "9223d4a2.b0f448",
+                "d25c0436.2c0c3",
+                "3e9f4af9.787486"
+            ]
+        ]
+    },
+    {
+        "id": "9223d4a2.b0f448",
+        "type": "debug",
+        "z": "81481b82.329c5",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "additional_context",
+        "x": 890,
+        "y": 162,
+        "wires": []
+    },
+    {
+        "id": "3e9f4af9.787486",
+        "type": "function",
+        "z": "81481b82.329c5",
+        "name": "Pass msg into Twitter",
+        "func": "// Put the msg selected based on the emotional tone into the msg payload\nmsg.payload = msg.additional_context.emotions;\n\nmsg.additional_context.emotions = '';\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 893,
+        "y": 396,
+        "wires": [
+            [
+                "bb545720.61bce",
+                "90d78aab.296fd"
+            ]
+        ]
+    },
+    {
+        "id": "bb545720.61bce",
+        "type": "debug",
+        "z": "81481b82.329c5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1161,
+        "y": 396,
+        "wires": []
+    },
+    {
+        "id": "fb2bb238.395a98",
+        "type": "watson-tone-analyzer-v3",
+        "z": "81481b82.329c5",
+        "name": "",
+        "tones": "emotion",
+        "sentences": "false",
+        "contentType": "false",
+        "tone-method": "generalTone",
+        "interface-version": "2016-05-19",
+        "inputlang": "en",
+        "default-endpoint": true,
+        "service-endpoint": "https://gateway.watsonplatform.net/tone-analyzer/api",
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "9e7b7d96.595df",
+                "f96ee93a.57a788"
+            ]
+        ]
+    },
+    {
+        "id": "90d78aab.296fd",
+        "type": "twitter out",
+        "z": "81481b82.329c5",
+        "twitter": "",
+        "name": "Tweet",
+        "x": 1161,
+        "y": 516,
+        "wires": []
+    },
+    {
+        "id": "36f66ab4.4756c6",
+        "type": "twitter in",
+        "z": "81481b82.329c5",
+        "twitter": "",
+        "tags": "#testmyapp",
+        "user": "false",
+        "name": "",
+        "topic": "tweets",
+        "inputs": 0,
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "fb2bb238.395a98"
+            ]
+        ]
+    },
+    {
+        "id": "d25c0436.2c0c3",
+        "type": "cloudant out",
+        "z": "81481b82.329c5",
+        "name": "",
+        "cloudant": "",
+        "database": "tweet-tone",
+        "service": "NodeRED-TA-Tweets-cloudantNoSQLDB",
+        "payonly": false,
+        "operation": "insert",
+        "x": 870,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "de5aa00a.bfe2d",
+        "type": "comment",
+        "z": "81481b82.329c5",
+        "name": "How the system works",
+        "info": "Grab a tweet, which might be a customer's feedback about your product. \nThen, analyze the tone behind the tweet, based on which post a response.\nStore the tweets collected and associated tone into cloudant for future analysis.",
+        "x": 160,
+        "y": 80,
+        "wires": []
+    }
+]
