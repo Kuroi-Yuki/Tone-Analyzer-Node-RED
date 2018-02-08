@@ -1,9 +1,9 @@
 # Tone-Analyzer-Node-RED
 This repository provides an example of a Node-RED application that grabs Tweets and analyzes the tone using the Watson Tone Analyzer service available on IBM Cloud. Based on the tone, the developer then posts something on Twitter. In this repository, we keep it simple by just posting one of two types of messages (based on whether the tone of the grabbed tweet is positive or negative).
 
-You can quickly deploy the application on IBM Cloud and set up the demo by clicking on:
+Try it out for yourself right now by clicking:
 
-<a href="https://bluemix.net/deploy?repository=https://github.com/Kuroi-Yuki/Tone-Analyzer-Node-RED.git&branch=master"><img src="https://bluemix.net/deploy/button.png" alt="Deploy to IBM Cloud"></a>
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=hhttps://github.com/Kuroi-Yuki/Tone-Analyzer-Node-RED.git)
 
 ## Node-RED on IBM Cloud
 Node-RED is an open source visual flow-based programming tool used for wiring not only Internet of Things (IoT) components, but also integrating an ensemble of service APIs, including ones provided by IBM Cloud.
@@ -59,7 +59,7 @@ Next, we need to create an instance of the Watson Tone Analyzer service and bind
 ![Node-RED flow editor](images/tone4.png)
 
 ## Overall Node-RED flow
-The following diagram provides an overview of the finalize Node-RED flow. If you are not interested in starting from scratch, you can import the final version of the flow from the file **Node-RED_flow_Full.json**, which can be found in this repository. To do that:
+The following diagram provides an overview of the finalize Node-RED flow. If you are not interested in starting from scratch, you can import the final version of the flow from the file **Node-RED_flow_Full.json**, which can be found in this repository under **Node-RED_flows**. To do that:
 - Go to the hamburger menu at the top right of the page after which select **Import Clipboard**. 
 - Paste the content of the JSON file and click on **Import**.
 
