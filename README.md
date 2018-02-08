@@ -19,7 +19,7 @@ An IBM Cloud account - A lite account, which is a free of charge account that do
 - The user is then required to enter a unique name for the application being created, which is also used as the hostname. If the user is using a lite account, the region is set to that chosen while applying for the account. 
 - After clicking on **create**, an instance of the Node-RED application (which uses Node.js to create server-side JavaScript applications) is created to which a **Cloudant NoSQL database** is bound. It will take some time for the application status to change to awake, indicating that it is running.
 
-![Creating the Node-RED application]()
+![Creating the Node-RED application](images/tone1.png)
 
 Next, we need to create an instance of the Tone Analyzer service and bind it to the Node-RED application. 
 
@@ -28,11 +28,11 @@ Next, we need to create an instance of the Tone Analyzer service and bind it to 
 - Click on **Tone Analyzer** and enter what you want to call the service (in this case, we called "<i>ToneAnalyzerService-Tweets</i>")
  - After clicking on **create**, an instance of the service will be created.
 
-![Creating the Tone Analyzer service]()
+![Creating the Tone Analyzer service](images/tone2.png)
 
 - Within the created service, go to **Connections** and click on the **connect** next to the name corresponding to the Node-Red application we just created (you will see it under **Cloud Foundry apps**.
 
-![Binding the Tone Analyzer service to the Node-Red Application]()
+![Binding the Tone Analyzer service to the Node-Red Application](images/tone3.png)
 
 - A window will pop up saying that **Your 'NodeRED-TA-Tweets' app needs to be restaged. Do you want to restage it now?**. Click on **restage**.
 
@@ -43,7 +43,7 @@ Next, we need to create an instance of the Tone Analyzer service and bind it to 
 - Click on **Databases** from the menu available on the left. By default, a database called **nodered** can be found, which we are not going to touch. 
 - Now, click on **Create Database** at the top of the page to create a new Database and give it a name (here, we called it "<i>tweet-tone</i>") and click **create**. Here, we will be saving any data we will be receiving/generating. Whenever we want to store something, we store that data in a document in a NoSQL database.
 
-![After creating a new database to store Tweets and the tone analysis]()
+![After creating a new database to store Tweets and the tone analysis](images/tone5.png)
 
 ## Setting up the Node-RED application
 - Go back to the **Dashboard** and click on the application you created earlier (we called "<i>NodeRED-TA-Tweets</i>").
@@ -51,13 +51,13 @@ Next, we need to create an instance of the Tone Analyzer service and bind it to 
 - Follow the directions to access the Node-RED editor (you are encouraged to secure your Node-RED editor to ensure that only authorized users can access it). 
 - Click on **Go to your Node-RED flow editor**.
 
-![Node-RED flow editor]()
+![Node-RED flow editor](images/tone4.png)
 
 
 ## Overall Node-RED flow
 The following diagram provides an overview of the finalize Node-RED flow. If you are not interested in starting from scratch, you can import the final version of the flow from the file **Node-RED_flow_Full.json**, which can be found in this repository.
 
-![Overall Node-RED flow]()
+![Overall Node-RED flow](images/tone6.png)
 
 ## Building the Node-RED flow
 
