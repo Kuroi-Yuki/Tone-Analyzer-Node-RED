@@ -13,7 +13,7 @@ Tone Analyzer leverages cognitive linguistic analysis to identify a variety of t
 
 ## Architecture overview
 An architecture overview of the system can be found below.
-![Architecture overview of the system]()
+![Architecture overview of the system](mages/tone16.png)
 
 ## Pre-requisite
 An IBM Cloud account - A lite account, which is a free of charge account that doesn’t expire, can be created through going to [IBM Cloud](http://ibm.biz/SheraaAIFeb18).
@@ -60,11 +60,12 @@ Next, we need to create an instance of the Watson Tone Analyzer service and bind
 ## Overall Node-RED flow
 The following diagram provides an overview of the finalize Node-RED flow. If you are not interested in starting from scratch, you can import the final version of the flow from the file **Node-RED_flow_Full.json**, which can be found in this repository.
 
-![Overall Node-RED flow]()
+![Overall Node-RED flow](images/tone7.png)
 
 ## Building the Node-RED flow
 - Start off by modifying the name current flow by double-clicking on **Flow 1** and modifying **name** (Let's change it to "*Tweet Tone Analyzer*"). This step is not compulsory but is helpful in case you are building a more complex application with multiple flows.
-![Rename the flow]()
+
+![Rename the flow](images/tone15.png)
 
 ### 1. twitter in node
 - Drag the **twitter in** or **twitter input** node, which you can find under the **social** node category (they are *modules* to be precise, but I am calling it a *category* just to make it easier to understand) on the panel on the left.
@@ -74,7 +75,7 @@ The following diagram provides an overview of the finalize Node-RED flow. If you
 - You are free to name this node something if you would like.
 - Click **Done**.
 
-![Edit twitter in node]()
+![Edit twitter in node](images/node8.png)
 
 ### 2. watson-tone-analyzer-v3 node
 - Drag the **tone analyzer v3** node into the flow, which you can find under the **IBM Watson** node category on the panel on the left.
@@ -87,7 +88,7 @@ The following diagram provides an overview of the finalize Node-RED flow. If you
 - Select the **Content type** as **Text**, which is what we receive from **Twitter** and the **Input Text Language** to **English**.
 - Click **Done**.
 
-![Edit watson-tone-analyzer-v3 node]()
+![Edit watson-tone-analyzer-v3 node](images/node9.png)
 
 You will notice that you didn't get asked to enter any credentials, which is always required when you try ti use any of the services' API such as the **Watson Tone Analyzer** service. The reason behind that is that **Node-RED** automatically detected that you have already binded the service to the **Node-RED** application. Otherwise, it would have asked you to fill in the credential details, which you can find when you go to the **Watson Tone Analyzer** and click on **Service credentials**
 
@@ -143,7 +144,7 @@ return msg;
 ```
 - Click **Done**.
 
-![Edit Function #1 node]()
+![Edit Function #1 node](images/node10.png)
 
 - Add another **function** node to the flow, give it a **Name** (we called it 8Pass msg into Twitter*)
 - Add the code below to the **Function** field. All this code does is make sure that the message we want to pass to **Twitter** is being passed correctly through integrating it into the message payload.
@@ -159,7 +160,7 @@ return msg;
 ```
 - Click **Done**.
 
-![Edit Function #2 node]()
+![Edit Function #2 node](images/node11.png)
 
 ### 4. cloudant out node
 - Drag the **cloudant out** node into the flow, which you can find under the **storage** node category on the panel on the left.
@@ -170,14 +171,14 @@ return msg;
 - Select the **Operation** as insert as we want to store the the tweet we grab and the associated tones into the database for later analysis in the future.
 - Click **Done**.
 
-![Edit cloudant out node]()
+![Edit cloudant out node](images/node12.png)
 
 ### 5. twitter out node
 - Drag the **twitter out** or **twitter output** node, which you can find under the **social** noode category on the panel on the left.
 - The process to be followed is same as that we followed for the **twitter in** node.
 - Click **Done**.
 
-![Edit twitter out node]()
+![Edit twitter out node](images/node13.png)
 
 ### 6. debug node
 Add the **debug** node to the flow, which you can find under the **output** node category on the panel on the left. You attach this node to display the output message content of the node it is attached to. This output will differ based on the selected message properties. You select **complete msg object** if you want to look at all the content of a message; otherwhise, you mention the part of the message you will be interested in.
@@ -188,6 +189,6 @@ Add the **debug** node to the flow, which you can find under the **output** node
 
 The purpose of this node can be to explain the functionality of a series of nodes or to make it clear ro anyone who has access to the Node-RED flow what they are looking at. Though it might seem redundant here, it can be very useful in complex flows. An example can be seen below.
 
-![Edit comment node]()
+![Edit comment node](images/tone14.png)
 
 
