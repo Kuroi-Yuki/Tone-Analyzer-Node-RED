@@ -13,7 +13,7 @@ Tone Analyzer leverages cognitive linguistic analysis to identify a variety of t
 
 ## Architecture overview
 An architecture overview of the system can be found below.
-![Architecture overview of the system](mages/tone16.png)
+![Architecture overview of the system](images/tone16.png)
 
 ## Pre-requisite
 An IBM Cloud account - A lite account, which is a free of charge account that doesn’t expire, can be created through going to [IBM Cloud](http://ibm.biz/SheraaAIFeb18).
