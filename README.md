@@ -3,7 +3,7 @@ This repository provides an example of a Node-RED application that grabs Tweets 
 
 Try it out for yourself right now by clicking:
 
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=hhttps://github.com/Kuroi-Yuki/Tone-Analyzer-Node-RED.git)
+[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/Kuroi-Yuki/Tone-Analyzer-Node-RED.git)
 
 ## Node-RED on IBM Cloud
 Node-RED is an open source visual flow-based programming tool used for wiring not only Internet of Things (IoT) components, but also integrating an ensemble of service APIs, including ones provided by IBM Cloud.
