@@ -5,6 +5,8 @@ Try it out for yourself right now by clicking:
 
 [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/Kuroi-Yuki/Tone-Analyzer-Node-RED.git)
 
+After clicking on the **Deploy to IBM Cloud** button, in the application name field, enter *NodeRED-TA-Tweets* and make sure to configure your Git account. After some time, the application will start running. Then, you can import the final version of the flow from the file **Node-RED_flow_Full.json** after accessing the Node-RED application.
+
 ## Node-RED on IBM Cloud
 Node-RED is an open source visual flow-based programming tool used for wiring not only Internet of Things (IoT) components, but also integrating an ensemble of service APIs, including ones provided by IBM Cloud.
 
