@@ -4,7 +4,7 @@ declared-services:
     plan: Lite
   ToneAnalyzerService-Tweets:
     label: tone_analyzer
-    plan: Lite
+    plan: lite
 applications:
 - path: .
   memory: 256M
