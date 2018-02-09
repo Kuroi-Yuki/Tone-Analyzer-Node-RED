@@ -1,10 +1,10 @@
 declared-services:
   NodeRED-TA-Tweets-cloudantNoSQLDB:
     label: cloudantNoSQLDB
-    plan: lite
+    plan: Lite
   ToneAnalyzerService-Tweets:
     label: tone_analyzer
-    plan: lite
+    plan: Lite
 applications:
 - path: .
   memory: 256M
